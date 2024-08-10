@@ -60,12 +60,12 @@ function getExchangeRate(){
 
     exchangeRateTxt.innerText = "Fetching rate......";
 
-    let url = `https://v6.exchangerate-api.com/v6/1f736223321320fe60f7823c/latest/${fromCurrency.value}`;
+    let api_url = `https://v6.exchangerate-api.com/v6/746379b7c8a059f9f8441651/latest/${fromCurrency.value}`;
     // fetching api response
-    fetch(url).then(response => response.json()).then(result => {
+    fetch(api_url).then(response => response.json()).then(result => {
+        console.log(result);
         let exchangeRate = result.conversion_rates[toCurrency.value];
         let totalExchangeRate = (amountVal * exchangeRate).toFixed(2);
-        console.log(result);
         //if user gives incorrect amount throws below error
         if(isNaN(totalExchangeRate)){
             exchangeRateTxt.innerText = "Provide Correct Amount..";
